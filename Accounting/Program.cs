@@ -28,7 +28,7 @@ namespace Accounting
                 Console.WriteLine($"{CommandAddNewAccounting} Добавить досье.");
                 Console.WriteLine($"{CommandShowAllAccounting} Показать все досье.");
                 Console.WriteLine($"{CommandDeleteAccounting} Удалить досье.");
-                Console.WriteLine($"{CommandSearchSecondName} Поиск по фамилии.");
+                Console.WriteLine($"{CommandSearchBySurname} Поиск по фамилии.");
                 Console.WriteLine($"{CommandExit} Выход из программы.");
 
                 userInput = Console.ReadLine();
@@ -47,8 +47,8 @@ namespace Accounting
                         DeleteAccounting(ref fullNames, ref jobs);
                         break;
 
-                    case CommandSearchSecondName:
-                        SearchSecondName(fullNames, jobs);
+                    case CommandSearchBySurname:
+                        SearchBySurname(fullNames, jobs);
                         break;
 
                     case CommandExit:
@@ -123,7 +123,7 @@ namespace Accounting
             WriteAnyKey();
         }
 
-        static void SearchSecondName(string[] fullNames, string[] jobs)
+        static void SearchBySurname(string[] fullNames, string[] jobs)
         {
             Console.Clear();
 
@@ -138,9 +138,9 @@ namespace Accounting
 
             for (int i = 0; i < fullNames.Length; i++)
             {
-                string[] secondName = fullNames[i].Split(symbol);
+                string[] fullName = fullNames[i].Split(symbol);
 
-                if (secondName[0].ToLower() == userInput.ToLower())
+                if (fullName[0].ToLower() == userInput.ToLower())
                 {
                     ShowResult(fullNames, jobs, i);
                     isFound = true;
